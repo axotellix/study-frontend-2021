@@ -1,0 +1,33 @@
+
+// [ FONTS ]
+
+
+// [ PRESETS ]
+@import 'Normalize.css';
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'customs';
+@import 'typography';
+
+
+// [ INTERFACE ]
+@import 'interface';
+
+
+// [ GENERAL ]
+@import 'styles';
+
+
+// [ PARTIALS ]
+@import 'partials/main';
+
+
+// [ PAGES ]
+@import 'pages/home';
+@import 'pages/article-page';
+
+// [ COMPONENTS ]
+@import 'components/article';
+@import 'components/article-comments';
+

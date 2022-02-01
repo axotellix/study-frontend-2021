@@ -1,0 +1,87 @@
+
+// [ COMPONENT: COMMENTS ]
+.article-comments {
+    width: 700px;
+    margin: 0 auto;
+    @include flex-align(def, def, column);
+}
+
+// form: add comment
+.article-comments .form-add-comment textarea {
+    width: 700px; height: 150px;
+    background: lighten($grey, 10%);
+    border-radius: 5px;
+    border: none; outline: none;
+    padding: 20px;
+    font-size: 1.6rem;
+    color: $d-white;
+    transition: all 0.25s;
+    resize: none;
+    margin-top: 10px;
+
+    &:focus {
+        background: lighten($grey, 4%);
+    }
+
+    &::-webkit-input-placeholder {
+        color: darken($d-white, 5%);
+    }
+    
+}
+.article-comments .form-add-comment .input-box {
+    width: 700px; height: 50px;
+    gap: 15px;
+    @include flex-align(space-between);
+
+    input {
+        flex-grow: 1; height: 100%;
+        background: lighten($grey, 10%);
+        border-radius: 5px;
+        border: none; outline: none;
+        padding: 0 20px;
+        font-size: 1.6rem;
+        color: $d-white;
+        transition: all 0.25s;
+
+        &:focus {
+            background: lighten($grey, 4%);
+        }
+
+        &::-webkit-input-placeholder {
+            color: darken($d-white, 5%);
+        }
+        
+    }
+    button {
+        @extend .CTA;
+        padding: 0 25px; height: 100%;
+    }
+}
+
+// comments list
+.article-comments .comments-list {
+    width: 700px;
+    padding: 20px;
+    border-radius: 7px;
+    background: darken($d-white, 10%);
+    margin-top: 20px;
+    gap: 10px;
+    @include flex-align(def, def, column);
+
+    .comment {
+        width: 100%; padding: 20px;
+        border-radius: 7px;
+        background: darken($d-white, 15%);
+        padding: 20px;
+
+        .username {
+            width: 100%;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+        .comment-text {
+            width: 100%;
+            font-size: 1.6rem;
+        }
+    }
+}

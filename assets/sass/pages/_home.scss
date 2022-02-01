@@ -1,0 +1,8 @@
+
+// [ PAGE: HOME ]
+main.home {
+    padding: 50px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+    @include flex-align(flex-start, flex-start, column);
+}
