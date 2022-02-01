@@ -6,16 +6,16 @@
     <!-- form: send comment -->
     <form @submit.prevent="addComment" class = 'form-add-comment'>
         <div class="input-box">
-            <input type="text" v-model="name" name = 'name' placeholder = 'Your name ...' />
+            <input type="text" v-model="name" name = 'name' placeholder = 'Your name ...' autocomplete="off" />
             <button>send</button>
         </div>
-        <textarea type="text" v-model="comment" name = 'comment' placeholder = 'enter comment ...'></textarea>
+        <textarea type="text" v-model="comment" name = 'comment' placeholder = 'enter comment ...' autocomplete="off"></textarea>
     </form>
 
     <!-- comments list -->
     <ul class = 'comments-list'>
         <div class="comments-sort">
-            <div @click="sortComments">
+            <div @click="sortComments( true )">
                 <span>Sort by date:</span>
                 <Ico type = 'arrow-sort-up' :params="this.sort_by_date" />
             </div>
@@ -64,19 +64,29 @@ export default {
     },
 
     methods: {
-        addComment() {
-            api.post('comments', { name: this.name, comment: this.comment, article_id: this.article_id })
+        async getComments() {
+            let article_id = this.article_id
+            let comments  = await api.get('comments', { article_id })
+            this.comments = comments
+            return new Promise(resolve => { resolve() })
         },
-        sortComments() {
+        async addComment() {
+            await api.post('comments', { name: this.name, comment: this.comment, article_id: this.article_id })
+            this.name = ''; this.comment = ''
+            this.getComments().then(() => {
+                this.sortComments()
+            })
+        },
+        sortComments( change_order = false ) {
 
             // change > order
-            this.sort_by_date = !this.sort_by_date
+            if(change_order) this.sort_by_date = !this.sort_by_date
             let order = this.sort_by_date || false
 
             // sort > comments
             this.comments.sort(function( c1, c2 ) {
-                let d1 = new Date(c1.updated_at).getDate()
-                let d2 = new Date(c2.updated_at).getDate()
+                let d1 = new Date(c1.updated_at).getTime()
+                let d2 = new Date(c2.updated_at).getTime()
                 return ((order + order % 2) - 1) * (d1 - d2)
             });
 
@@ -86,13 +96,10 @@ export default {
     // [ hooks ] 
     async mounted() {
 
-        // fetch > articles
-        let article_id = this.article_id
-        let comments  = await api.get('comments', { article_id })
-        this.comments = comments
-
-        // sort > comment (by date)
-        this.sortComments()
+        // fetch > comments
+       this.getComments().then(() => {
+           this.sortComments()
+       })
 
     },
 }

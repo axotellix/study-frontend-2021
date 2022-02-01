@@ -40,7 +40,7 @@ const api = {
     },
 
     //@ define > GET method 
-    async get( route, dynamic_data = {} ) {
+    get: async function( route, dynamic_data = {} ) {
 
         // update > dynamic data in routes
         this.routes.GET.dynamic = dynamic_data
@@ -62,11 +62,13 @@ const api = {
         this.routes.POST.dynamic = dynamic_data
 
         // define > request params
-        let endpoint = this.routes.POST[route](this)
+        let endpoint = this.server + this.routes.POST[route](this)
         let config = this.config
 
         // send > request
         let req = await axios.post(endpoint, { config })
+
+        return req;
 
     }
  
