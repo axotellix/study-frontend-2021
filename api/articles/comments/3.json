@@ -1,0 +1,68 @@
+{
+    "data": [
+        {
+        "id": 19,
+        "created_at": "2021-10-20T17:12:19.000000Z",
+        "updated_at": "2021-10-20T17:12:19.000000Z",
+        "user_name": "Mike",
+        "comment": "Cool",
+        "article_id": 3
+        },
+        {
+        "id": 20,
+        "created_at": "2021-10-20T17:13:02.000000Z",
+        "updated_at": "2021-10-20T17:13:02.000000Z",
+        "user_name": "Andrew",
+        "comment": "Nice",
+        "article_id": 3
+        },
+        {
+        "id": 21,
+        "created_at": "2021-10-20T17:13:23.000000Z",
+        "updated_at": "2021-10-20T17:13:23.000000Z",
+        "user_name": "Julia",
+        "comment": "So good text",
+        "article_id": 3
+        },
+        {
+        "id": 26,
+        "created_at": "2021-10-22T20:22:13.000000Z",
+        "updated_at": "2021-10-22T20:22:13.000000Z",
+        "user_name": "gogi",
+        "comment": "aloha",
+        "article_id": 3
+        },
+        {
+        "id": 33,
+        "created_at": "2021-11-02T11:07:35.000000Z",
+        "updated_at": "2021-11-02T11:07:35.000000Z",
+        "user_name": "islam",
+        "comment": "norm tachka",
+        "article_id": 3
+        },
+        {
+        "id": 56,
+        "created_at": "2021-12-27T13:51:18.000000Z",
+        "updated_at": "2021-12-27T13:51:18.000000Z",
+        "user_name": "Yaro",
+        "comment": "cool",
+        "article_id": 3
+        },
+        {
+        "id": 63,
+        "created_at": "2022-01-08T10:04:40.000000Z",
+        "updated_at": "2022-01-08T10:04:40.000000Z",
+        "user_name": "\u041c\u0430\u0440\u043a",
+        "comment": "\u0412\u0410\u0423!",
+        "article_id": 3
+        },
+        {
+        "id": 79,
+        "created_at": "2022-01-15T15:49:32.000000Z",
+        "updated_at": "2022-01-15T15:49:32.000000Z",
+        "user_name": "fh",
+        "comment": "fgh",
+        "article_id": 3
+        }
+    ]
+}  
