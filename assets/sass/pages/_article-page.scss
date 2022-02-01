@@ -24,14 +24,14 @@ main.article-page .article-title {
     }
 }
 main.article-page .article-date {
-    color: $grey;
+    color: lighten($grey, 20%);
     font-size: 1.5rem;
     margin-top: -15px;
     margin-bottom: 5px;
-    font-weight: $f-normal;
+    font-weight: $f-medium;
 
     span {
-        font-weight: $f-normal;
+        font-weight: $f-medium;
         margin-right: 10px;
     }
 }
@@ -47,9 +47,13 @@ main.article-page .article-cover {
     }
 }
 
-main.article-page .article-text p {
-    color: $grey;
-    font-size: 1.6rem;
-    line-height: 2;
+main.article-page .article-text {
+    margin-bottom: 40px;
+    border-bottom: 1px solid $line;
+    p {
+        color: $grey;
+        font-size: 1.6rem;
+        line-height: 2;
+    }
 }
 

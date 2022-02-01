@@ -14,9 +14,19 @@
 
     <!-- comments list -->
     <ul class = 'comments-list'>
+        <div class="comments-sort">
+            <div @click="sortComments">
+                <span>Sort by date:</span>
+                <Ico type = 'arrow-sort-up' :params="this.sort_by_date" />
+            </div>
+        </div>
         <li class = 'comment' v-for="comment in comments" :key="comment.id">
             <h5 class = 'username'>{{ comment.user_name }}</h5>
             <p class = 'comment-text'>{{ comment.comment }}</p>
+            <p class = 'comment-date'>
+                {{ new Date(comment.created_at).toLocaleDateString("en-EN", { day: 'numeric', month: 'short', year: 'numeric' }) }}
+                <span>last edited: {{ new Date(comment.updated_at).toLocaleDateString("en-EN", { day: 'numeric', month: 'short', year: 'numeric' }) }}</span>
+            </p>
         </li>
     </ul>
 
@@ -29,9 +39,17 @@
 // [ System ]
 import api from '../api/api.js'
 
+// [ Components ]
+import Ico from '@/components/Ico'
+
 export default {
     // [ Component name ]
     name: 'ArticleComments',
+
+    // [ Child components]
+    components: {
+        Ico
+    },
 
     // [ imported props ]
     props: ['article_id'],
@@ -41,12 +59,27 @@ export default {
             comments: {},
             name: '',
             comment: '',
+            sort_by_date: false
         }
     },
 
     methods: {
         addComment() {
             api.post('comments', { name: this.name, comment: this.comment, article_id: this.article_id })
+        },
+        sortComments() {
+
+            // change > order
+            this.sort_by_date = !this.sort_by_date
+            let order = this.sort_by_date || false
+
+            // sort > comments
+            this.comments.sort(function( c1, c2 ) {
+                let d1 = new Date(c1.updated_at).getDate()
+                let d2 = new Date(c2.updated_at).getDate()
+                return ((order + order % 2) - 1) * (d1 - d2)
+            });
+
         }
     },
 
@@ -57,6 +90,9 @@ export default {
         let article_id = this.article_id
         let comments  = await api.get('comments', { article_id })
         this.comments = comments
+
+        // sort > comment (by date)
+        this.sortComments()
 
     },
 }

@@ -846,14 +846,14 @@ main.article-page .article-title span {
 }
 
 main.article-page .article-date {
-  color: #7082A6;
+  color: #afb9cd;
   font-size: 1.5rem;
   margin-top: -15px;
   margin-bottom: 5px;
-  font-weight: 400;
+  font-weight: 500;
 }
 main.article-page .article-date span {
-  font-weight: 400;
+  font-weight: 500;
   margin-right: 10px;
 }
 
@@ -879,6 +879,10 @@ main.article-page .article-cover img {
   width: 100%;
 }
 
+main.article-page .article-text {
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(112, 130, 166, 0.12);
+}
 main.article-page .article-text p {
   color: #7082A6;
   font-size: 1.6rem;
@@ -1014,7 +1018,6 @@ main.article-page .article-text p {
 }
 
 .article-comments {
-  width: 700px;
   margin: 0 auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -1033,8 +1036,15 @@ main.article-page .article-text p {
           align-items: center;
 }
 
-.article-comments .form-add-comment textarea {
+.article-comments .form-add-comment {
   width: 700px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(112, 130, 166, 0.12);
+}
+
+.article-comments .form-add-comment textarea {
+  width: 100%;
   height: 150px;
   background: #8f9dba;
   border-radius: 5px;
@@ -1056,7 +1066,7 @@ main.article-page .article-text p {
 }
 
 .article-comments .form-add-comment .input-box {
-  width: 700px;
+  width: 100%;
   height: 50px;
   gap: 15px;
   display: -webkit-box;
@@ -1101,9 +1111,9 @@ main.article-page .article-text p {
   width: 700px;
   padding: 20px;
   border-radius: 7px;
-  background: #d3d7e9;
+  background: #e4e7f2;
   margin-top: 20px;
-  gap: 10px;
+  gap: 12px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1120,19 +1130,102 @@ main.article-page .article-text p {
       -ms-flex-align: center;
           align-items: center;
 }
+.article-comments .comments-list .comments-sort {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: #8f9dba;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.article-comments .comments-list .comments-sort div {
+  gap: 10px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.article-comments .comments-list .comments-sort div:hover {
+  color: #7d8dae;
+}
+.article-comments .comments-list .comments-sort div:hover .ico {
+  fill: #b62de7;
+  stroke: #b62de7;
+}
+.article-comments .comments-list .comments-sort .ico {
+  width: 22px;
+  height: 22px;
+  fill: #b62de7;
+  stroke: #b62de7;
+  fill: #414A63;
+  stroke: #414A63;
+  stroke-width: 0.5px;
+  cursor: pointer;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.article-comments .comments-list .comments-sort .ico.desc {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
 .article-comments .comments-list .comment {
   width: 100%;
   padding: 20px;
   border-radius: 7px;
-  background: #c2c8e1;
+  background: #d3d7e9;
   padding: 20px;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
+}
+.article-comments .comments-list .comment:hover {
+  background: #c9cee4;
 }
 .article-comments .comments-list .comment .username {
   width: 100%;
   font-size: 1.6rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .article-comments .comments-list .comment .comment-text {
   width: 100%;
   font-size: 1.6rem;
+}
+.article-comments .comments-list .comment .comment-date {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  color: #8090b0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
