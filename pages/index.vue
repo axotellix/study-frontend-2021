@@ -3,7 +3,15 @@
 <template>
 <main class = 'home'>
 
-    <h1 class = 'page-title'>All articles ({{ this.articles.length }})</h1>
+    <!-- page title -->
+    <h1 class = 'page-title'>
+        All articles ({{ this.articles.length }})
+
+        <form action="" class="search-form">
+            <input type="text" placeholder = 'search ...' v-model = 'src_query' name = 'search' autocomplete="off" />
+            <Ico type = 'search' />
+        </form>
+    </h1>
     
     <!-- article -->
     <ul class = 'articles'>
@@ -21,6 +29,7 @@ import api from '../api/api.js'
 
 // [ Components ]
 import Article from '@/components/Article'
+import Ico from '@/components/Ico'
 
 export default {
     // [ Component name ]
@@ -28,9 +37,24 @@ export default {
 
     // [ Child components ]
     components: {
-        Article
+        Article,
+        Ico
     },
 
+    // [ Whatchers ]
+    watch: { 
+        src_query: function() {
+            if( this.src_query ) {
+                this.articles = this.$store.state.articles.filter(article => {
+                    return article.title.toLowerCase().includes(this.src_query)
+                })
+            } else {
+                this.articles = this.$store.state.articles
+            }
+        },
+    },
+
+    // [ Head tags ]
     head() {
         return {
             link: [
@@ -39,16 +63,20 @@ export default {
         }
     },
 
+    // [ Components props ]
     data() {
         return {
-            articles: [1, 2, 3, 4]
+            articles: [1, 2, 3, 4],
+            src_query: ''
         }
     },
 
+    // [ Hooks ] 
     async mounted() {
 
         // fetch > articles
         this.articles = await api.get('articles')
+        this.$store.commit('keep_local', this.articles)
 
     }
 }

@@ -54,6 +54,7 @@ export default {
     // [ imported props ]
     props: ['article_id'],
 
+    // [ Components props ]
     data() {
         return {
             comments: {},
@@ -63,6 +64,7 @@ export default {
         }
     },
 
+    // [ METHODS ] 
     methods: {
         async getComments() {
             let article_id = this.article_id

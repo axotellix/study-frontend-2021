@@ -6,3 +6,32 @@ main.home {
     gap: 20px;
     @include flex-align(flex-start, flex-start, column);
 }
+
+main.home .page-title {
+    @include flex-align(space-between)
+}
+main.home .search-form {
+    width: 350px;
+    gap: 15px;
+    background: transparent;
+    flex-direction: row-reverse;
+    @include flex-align(space-between)
+}
+main.home .search-form .ico {
+    position: relative;
+    top: 2px;
+    width: 16px; height: 16px;
+    fill: $grey;
+    transition: fill 0.3s;
+}
+main.home .search-form input {
+    width: 100%; 
+    background: transparent;
+    font-size: 1.8rem;
+    color: $grey;
+    @include flex-align(space-between);
+
+   &:focus ~ div .ico {
+       fill: $purple;
+   } 
+}

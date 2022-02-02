@@ -13,8 +13,32 @@ a {
     color: $d-grey;
 }
 
+.nav .page-title {
+    transition: 0.25s;
+
+    &:hover {
+        color: lighten($d-grey, 15%);
+
+        .ico {
+            transition: 0.25s;
+            fill: lighten($d-grey, 15%);
+        }
+    }
+}
 .page-title {
+    width: 100%;
     margin-bottom: var(--m-tiny);
+    gap: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 30px !important;
+    border-bottom: 2px solid $line;
+    @include flex-align(flex-start);
+
+    .ico {
+        position: relative;
+        bottom: -2px;
+        fill: $d-grey;
+    }
 }
 
 .body-text {

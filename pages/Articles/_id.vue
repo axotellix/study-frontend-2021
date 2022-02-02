@@ -4,7 +4,12 @@
 <main class = 'article-page'>
 
     <!-- article: titles -->
-    <h1 class = 'page-title'>Article page</h1>
+    <router-link to = "/" class = 'nav wide'>
+        <h1 class = 'page-title'>
+            <Ico type = 'arrow-go-back' />
+            Article page
+        </h1>
+    </router-link>
     <h2 class = 'article-title'><span>article:</span> {{ this.article.title }}</h2>
     <p  class = 'article-date'><span>published:</span> {{ this.article.date }}</p>
 
