@@ -13,9 +13,7 @@ app.set('view engine', 'ejs');
 app.use(cors());
 
 // [ PRESETS ]
-const api   = path.resolve(__dirname + "\\api\\")
-console.log(api);
-const front = 'https://final-axotellix.vercel.app/'
+const api = path.resolve(__dirname + "\\api\\")
 
 
 // [ ROUTES ]
