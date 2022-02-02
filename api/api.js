@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // [ MAIN ]
 const api = {
-    server: 'https://web-nuxt-api-axotellix.vercel.app/',
+    server: 'https://web-nuxt-api-axotellix.vercel.app',
     routes: {
 
         // [ GET requests ]
