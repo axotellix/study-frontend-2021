@@ -5,7 +5,7 @@ const fetch = require('cross-fetch');
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
-const res = require('express/lib/response');
+const process = require('process');
 
 
 // [ SYSTEM SETTINGS ]
@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(cors());
 
 // [ PRESETS ]
-const api = path.resolve(__dirname + "\\api\\")
+const api = process.cwd() + '/api'
 
 
 // [ ROUTES ]
@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 app.get('/api/articles', async (request, result) => {
 
     // define > route
-    const route = '\\articles\\articles.json'
+    const route = '/articles/articles.json'
 
     // fetch > data
     try {
@@ -33,7 +33,7 @@ app.get('/api/articles', async (request, result) => {
         result.send(JSON.parse(file));
 
     } catch(err) {
-        console.log('error occured:', err);
+        res.send({ "msg": "error occured", "error": err });
     }
     
 })
@@ -41,7 +41,7 @@ app.get('/api/articles', async (request, result) => {
 app.get('/api/articles/:id', async (request, result) => {
 
     // define > route
-    const route = '\\articles\\articles.json'
+    const route = '/articles/articles.json'
 
     // fetch > data
     try {
@@ -49,7 +49,7 @@ app.get('/api/articles/:id', async (request, result) => {
         result.send({"data": JSON.parse(file).data[request.params.id]});
 
     } catch(err) {
-        console.log('error occured:', err);
+        res.send({ "msg": "error occured", "error": err });
     }
     
 })
@@ -58,10 +58,10 @@ app.get('/api/articles/:id', async (request, result) => {
 app.get('/api/articles/:id/comments', async (request, result) => {
 
     // get > parameters
-    const id    = request.params.id
+    const id = request.params.id
 
     // define > route
-    const route = '\\articles\\comments\\' + id + '.json'
+    const route = `/articles/comments/${id}.json`
 
     // fetch > data
     try {
@@ -69,7 +69,7 @@ app.get('/api/articles/:id/comments', async (request, result) => {
         result.send(JSON.parse(file));
 
     } catch(err) {
-        console.log('error occured:', err);
+        res.send({ "msg": "error occured", "error": err });
     }
 
 })
@@ -79,11 +79,11 @@ app.post('/api/articles/:article_id/comments', async (request, result) => {
 
     // get > parameters
     const article_id = request.params.article_id
-    const name    = request.query.name
+    const name       = request.query.name
     const comment    = request.query.comment
 
     // define > route
-    const route   = `\\articles\\comments\\${article_id}.json`
+    const route   = `/articles/comments/${article_id}.json`
 
     // fetch > data
     try {
